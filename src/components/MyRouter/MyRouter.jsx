@@ -1,7 +1,7 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import { App } from '../../App'
 import { MovieDetails } from '../MovieDetails/MovieDetails'
-import { Posts } from '../pages/Posts'
+//import { Posts } from '../pages/Posts'
 
 const MyRouter = () => {
     return(
