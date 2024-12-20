@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { AuthContext } from "../context/AuthContext"
 
-const Register = () => {
+export const Register = () => {
 
     const {registerUser, authError} = useContext(AuthContext)
     const [user, setUser] = useState({
