@@ -40,20 +40,6 @@ export const AuthController = ({children}) => {
         })
     })
 
-    const registerUser = async (user) => {
-        console.log(user)
-        try{    
-         const response = await axios.post(`http://localhost:${PORT}/register`, user)
-         if(response.status === 201){
-            alert(response.data.message)
-            navigate('/login')
-         }
-        }
-        catch(err){
-            setAuthError(err.response.data.message)
-        }
-    }
-
     const loginUser = async (user) => {
         try{    
             const response = await axios.post(`http://localhost:3002/login`, user)
@@ -70,7 +56,7 @@ export const AuthController = ({children}) => {
     }
 
     return(
-        <AuthContext.Provider value={{registerUser, authError, loginUser, isAuthenticated}} >
+        <AuthContext.Provider value={{ authError, loginUser, isAuthenticated}} >
             {children}
         </AuthContext.Provider>
     )
