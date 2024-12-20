@@ -21,7 +21,8 @@ export const AuthController = ({children}) => {
             method: GET,
             headers: {
                 'Content-Type': 'application/json',
-            },
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+        },
             body: JSON.stringify({
                 name: name,
                 last_name: last_name,

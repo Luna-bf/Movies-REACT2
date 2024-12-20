@@ -15,10 +15,8 @@ const NavBar = () => {
                     <Link to='/posts'><li>Posts</li></Link>
                     {isAuthenticated ? (
                         <>
-                        
                             <Link to='/profile'>Profile</Link>
-                            <button>Logout</button>
-                           
+                            <button>Logout</button>  
                         </>
                     )
                         : (
