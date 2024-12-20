@@ -1,5 +1,5 @@
 import { MovieAPI } from "./components/MovieAPI";
-import { SignUp } from './components/pages/SignUp'
+import { Register } from './components/pages/Register'
 
 export function App() {
     //Revoir la difference entre les export normaux et par defaut
@@ -11,7 +11,7 @@ export function App() {
         <>
             {/*Tout ce qui est ici, c'est le contenu de mon routeur*/}
             <MovieAPI />
-            <SignUp />
+            <Register />
             {/*Ici il va y avoir chaques routes individuelles*/}
         </>
     )

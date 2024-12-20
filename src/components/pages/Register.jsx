@@ -10,7 +10,7 @@ const Register = () => {
         last_name : '',
         password : ''
     })
-
+//trouver le token (???) dans le localstroage  et le decoder ??
     const handleSubmit = (e) => {
         e.preventDefault()
         registerUser(user)
@@ -32,12 +32,11 @@ const Register = () => {
                 <br />
                 <label htmlFor="">Password</label>
                 <input className="bg-white" type="password" onChange={e => setUser({...user, password : e.target.value })} />
-                <input type="submit"  value='register'/>
+                <input type="submit" value='register'/>
             </form>
             {authError && alert(authError)}
         </>
     )
 }
-
 
 export default Register

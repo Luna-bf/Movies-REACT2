@@ -1,6 +1,6 @@
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useContext } from 'react'
-import {useState, useEffect, createContext} from 'react'
 import {useNavigate} from 'react-router-dom'
 
 
@@ -17,6 +17,27 @@ export const AuthController = ({children}) => {
         if(token){
             setIsAuthenticated(true)
         }
+        fetch(token, {
+            method: GET,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: name,
+                last_name: last_name,
+                email: email,
+                password: password,
+            }),
+        })
+        .then((response) => {
+            return response.json()
+        })
+
+        .then((data) => {
+            localStorage.setItem('token', data.access)
+            localStorage.setItem('token', data.refresh)
+            console.log(localStorage)
+        })
     })
 
     const registerUser = async (user) => {
