@@ -1,35 +1,30 @@
 import axios from 'axios'
-import { useState, useEffect } from 'react'
+import {useState, useEffect} from 'react'
 
 const Posts = () => {
-    const [ posts, setPosts ] = useState(null)
-    const [ loading, setLoading ] = useState(true);
 
     const fetchPosts = async () => {
-        setLoading(true)
-
-        try {
-            const response = await axios.get('http://localhost:3002/posts')
-            setPosts(response.data.results);
-            setLoading(false)
-        } catch(err) {
-            console.error(err)
+    
+        try{
+            const response = await axios.get(`http://localhost:3002/posts`, {
+                headers : {
+                    Authorization : `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjc2NDIwOGY5MTc2NmI2MDEyN2Q1ODU2IiwiaWF0IjoxNzM0NjE2NTg4fQ.tc9dcArFBOvJ0uN0TOGu2oT_Yeux022GT3jovNEB4oM`
+                }
+            })
+            console.log(response)
+            
         }
-        finally {
-            setLoading(false)
+        catch(err){
+            console.log(err)
         }
     }
-    return (
-        <>
-            {posts && posts.map((post, index) => {
-            return(
-                <div key={index}>
-                    <h2>Post</h2>
-                    <p>amazing post</p>
-                </div>
-            )
-        })}
-        </>
+
+    useEffect(() => {
+        fetchPosts()
+    }, [])
+
+    return(
+        <h1>Posts Page</h1>
     )
 }
 
