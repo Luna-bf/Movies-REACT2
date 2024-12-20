@@ -15,12 +15,29 @@ export default class SignUp extends Component {
         e.preventDefault();
         const { name, last_name, email, password } = this.state
         console.log(name, last_name, email, password)
+        fetch("http://localhost:3002/movies", {
+            method:"POST",
+            crossDomain:true,
+            headers:{
+                "Content-Type":"application/json",
+                Accept: "application/json",
+                "Access-control-Allow-Origin":"*"
+            },
+            body:JSON.stringify({
+                name,
+                last_name,
+                email,
+                password
+            })
+        }).then((res)=>res.json())
+        .then((data) => {
+            console.log(data, 'userRegister');
+        })
     }
   render() {
     return (
       <form onSubmit={this.handleSubmit(e)}>
         <h3>Sign Up</h3>
-
         <div className="mb-3">
           <label>First name</label>
           <input
